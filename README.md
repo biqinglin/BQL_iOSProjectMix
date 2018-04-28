@@ -99,6 +99,14 @@ $ sudo plutil -convert binary1 Obfuscator\ 3.4.strings
 > 开启混淆, Build Settings -> OTHER_CFLAGS -> `-mllvm -enable-cffobf` `-mllvm -enable-bcfobf`
 
 
+### 次方式修改了你的编译器，使得在编译时在代码中添加混淆代码（在不影响应用本身逻辑的前提下），我做了一个测试，反编译一个使用了混淆与不使用混淆的ipa包，查看调用树形图可以看到对比:
+
+>
+> ![未使用混淆](http://occmuwiio.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-04%20%E4%B8%8B%E5%8D%883.42.30.png)
+> 
+> ![使用混淆](http://occmuwiio.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-04%20%E4%B8%8B%E5%8D%883.44.55.png)
+
+
 ### 此外，还提供类名、方法名混淆，提供两个文件：func.list、confuse.sh
 ##### func.list 
 > 罗列出需要混淆的类名、方法名

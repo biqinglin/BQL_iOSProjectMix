@@ -15,6 +15,7 @@
 		C59E124420946B620083F3AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C59E124320946B620083F3AB /* main.m */; };
 		C59E124E20946B620083F3AB /* BQL_iOSProjectMixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C59E124D20946B620083F3AB /* BQL_iOSProjectMixTests.m */; };
 		C59E125920946B620083F3AB /* BQL_iOSProjectMixUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C59E125820946B620083F3AB /* BQL_iOSProjectMixUITests.m */; };
+		C59E126820946BBD0083F3AB /* confuse.sh in Resources */ = {isa = PBXBuildFile; fileRef = C59E126720946BBD0083F3AB /* confuse.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		C59E125420946B620083F3AB /* BQL_iOSProjectMixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BQL_iOSProjectMixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C59E125820946B620083F3AB /* BQL_iOSProjectMixUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BQL_iOSProjectMixUITests.m; sourceTree = "<group>"; };
 		C59E125A20946B620083F3AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C59E126720946BBD0083F3AB /* confuse.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = confuse.sh; sourceTree = "<group>"; };
+		C59E126920946BCD0083F3AB /* codeObfuscation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = codeObfuscation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 		C59E122820946B610083F3AB = {
 			isa = PBXGroup;
 			children = (
+				C59E126720946BBD0083F3AB /* confuse.sh */,
 				C59E123320946B620083F3AB /* BQL_iOSProjectMix */,
 				C59E124C20946B620083F3AB /* BQL_iOSProjectMixTests */,
 				C59E125720946B620083F3AB /* BQL_iOSProjectMixUITests */,
@@ -101,6 +105,7 @@
 		C59E123320946B620083F3AB /* BQL_iOSProjectMix */ = {
 			isa = PBXGroup;
 			children = (
+				C59E126920946BCD0083F3AB /* codeObfuscation.h */,
 				C59E123420946B620083F3AB /* AppDelegate.h */,
 				C59E123520946B620083F3AB /* AppDelegate.m */,
 				C59E123720946B620083F3AB /* ViewController.h */,
@@ -142,6 +147,7 @@
 				C59E122D20946B620083F3AB /* Sources */,
 				C59E122E20946B620083F3AB /* Frameworks */,
 				C59E122F20946B620083F3AB /* Resources */,
+				C59E126620946BA20083F3AB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -240,6 +246,7 @@
 			files = (
 				C59E124120946B620083F3AB /* LaunchScreen.storyboard in Resources */,
 				C59E123E20946B620083F3AB /* Assets.xcassets in Resources */,
+				C59E126820946BBD0083F3AB /* confuse.sh in Resources */,
 				C59E123C20946B620083F3AB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +266,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C59E126620946BA20083F3AB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = $PROJECT_DIR/confuse.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C59E122D20946B620083F3AB /* Sources */ = {
@@ -431,8 +454,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				COMPILER_INDEX_STORE_ENABLE = NO;
+				ENABLE_BITCODE = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.obfuscator.4_0;
 				INFOPLIST_FILE = BQL_iOSProjectMix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-mllvm",
+					"-enable-cffobf",
+					"-mllvm",
+					"-enable-bcfobf",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.app.BQL-iOSProjectMix";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -444,8 +477,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				COMPILER_INDEX_STORE_ENABLE = NO;
+				ENABLE_BITCODE = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.obfuscator.4_0;
 				INFOPLIST_FILE = BQL_iOSProjectMix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-mllvm",
+					"-enable-cffobf",
+					"-mllvm",
+					"-enable-bcfobf",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.app.BQL-iOSProjectMix";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

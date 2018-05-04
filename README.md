@@ -119,4 +119,4 @@ $ sudo plutil -convert binary1 Obfuscator\ 3.4.strings
 >
 > command + B 将生成的 codeObfuscation.h加入项目
 
-### PS：我们使用这套方案，（2种）目的是为了混淆我们的SDK（当然了，这个SDK对苹果爸爸来说是不合规的）
+### PS：我们使用这套方案，（2种）目的是为了混淆我们的SDK（当然了，这个SDK对苹果爸爸来说是不合规的）,目前暂未出现因为机审不过的情况，通常是因为马甲本身的功能不够丰富。
